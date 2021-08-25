@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <v-card v-if="nasaResponse" class="mx-auto rounded-xl" max-width="400">
+    <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
       <v-img
+        aspect-ratio="1.7"
         class="white--text align-end"
-        height="200px"
         :src="nasaResponse.thumbnail_url"
       >
       </v-img>

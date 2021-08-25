@@ -24,9 +24,11 @@ export default {
 <style>
 html,
 body {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 .wrapper {
   display: flex;

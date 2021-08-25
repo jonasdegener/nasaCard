@@ -6,6 +6,9 @@
       right: () => swipe('Right'),
     }"
   >
+    <div class="jd-help-text">
+      <p class="pt-1">swipe left and right</p>
+    </div>
     <v-main class="wrapper">
       <apod v-if="card === 1" />
       <wheater v-if="card === 2" />
@@ -31,13 +34,13 @@ export default {
     swipe(direction) {
       console.log(direction);
       if (direction === "Right") {
-        if (this.card < 2) {
-          this.card += 1;
+        if (this.card > 1) {
+          this.card -= 1;
         }
       }
       if (direction === "Left") {
-        if (this.card > 1) {
-          this.card -= 1;
+        if (this.card < 2) {
+          this.card += 1;
         }
       }
     },
@@ -45,6 +48,11 @@ export default {
 };
 </script>
 <style>
+.jd-help-text {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+}
 html,
 body {
   height: 100vh;

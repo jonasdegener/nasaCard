@@ -21,6 +21,13 @@
         </v-expansion-panels>
       </v-card-text>
     </v-card>
+    <v-progress-circular
+      v-if="!nasaResponse"
+      :size="70"
+      :width="7"
+      color="blue"
+      indeterminate
+    ></v-progress-circular>
   </v-container>
 </template>
 
@@ -53,6 +60,6 @@ export default {
 </script>
 <style>
 .jd-pannel {
-  box-shadow: rgba(127, 127, 127, 0.25) 0px 25px 50px -12px;
+  box-shadow: rgba(127, 127, 127, 0.25) 0 25px 50px -12px;
 }
 </style>

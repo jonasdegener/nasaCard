@@ -7,9 +7,12 @@
         :src="nasaResponse.thumbnail_url"
       >
       </v-img>
+      <v-card-subtitle class="pb-0 mb-1 text-center">
+        Here you get a daily picture + description on a theme of Nasa.
+      </v-card-subtitle>
 
       <v-card-text class="text--primary">
-        <v-expansion-panels class="rounded-xl jd-pannel my-3">
+        <v-expansion-panels class="rounded-xl jd-pannel my-3" popout>
           <v-expansion-panel>
             <v-expansion-panel-header>
               {{ nasaResponse.title }}
@@ -19,6 +22,15 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
+        <div class="d-flex justify-center">
+          <a
+            class="jd-url text-center"
+            :href="nasaResponse.url"
+            target="_blank"
+          >
+            Source or video
+          </a>
+        </div>
       </v-card-text>
     </v-card>
     <v-progress-circular
@@ -61,5 +73,8 @@ export default {
 <style>
 .jd-pannel {
   box-shadow: rgba(127, 127, 127, 0.25) 0 25px 50px -12px;
+}
+.jd-url {
+  font-size: 8px;
 }
 </style>

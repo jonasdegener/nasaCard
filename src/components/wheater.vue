@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="jd-overflow">
     <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
       <v-img aspect-ratio="1.2" class="white--text align-end" :src="pictureUrl">
       </v-img>
@@ -93,5 +93,8 @@ export default {
 <style>
 .jd-pannel {
   box-shadow: rgba(127, 127, 127, 0.25) 0 25px 50px -12px;
+}
+.jd-overflow {
+  overflow-y: hidden;
 }
 </style>

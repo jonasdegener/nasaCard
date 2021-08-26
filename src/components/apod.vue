@@ -1,11 +1,7 @@
 <template>
   <v-container>
     <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
-      <v-img
-        aspect-ratio="1.7"
-        class="white--text align-end"
-        :src="nasaResponse.thumbnail_url"
-      >
+      <v-img aspect-ratio="1.7" class="white--text align-end" :src="pictureUrl">
       </v-img>
       <v-card-subtitle class="pb-0 mb-1 text-center">
         Here you get a daily picture + description on a theme of Nasa.
@@ -22,15 +18,6 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <div class="d-flex justify-center">
-          <a
-            class="jd-url text-center"
-            :href="nasaResponse.url"
-            target="_blank"
-          >
-            Source or video
-          </a>
-        </div>
       </v-card-text>
     </v-card>
     <v-progress-circular
@@ -63,8 +50,15 @@ export default {
           "https://api.nasa.gov/planetary/apod?api_key=n1pHbdRcIGmowU8HOEbnb3iQwW89beCbfJnoAk0L&thumbs=true"
         )
         .then((response) => {
+          const responseData = response.data;
           console.log(response.data);
-          this.nasaResponse = response.data;
+          if ("thumb" in responseData) {
+            this.pictureUrl = responseData.thumb;
+          } else {
+            this.pictureUrl = responseData.url;
+          }
+
+          this.nasaResponse = responseData;
         });
     },
   },

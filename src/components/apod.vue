@@ -1,11 +1,11 @@
 <template>
   <v-container>
-    <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
+    <v-card v-if="nasaResponse" class="mx-4 rounded-xl">
       <div class="d-flex justify-center align-center">
         <v-img
           v-if="pictureUrl.length > 0"
           aspect-ratio="1.7"
-          class="white--text align-end"
+          class="white--text align-end rounded-xl"
           :src="pictureUrl"
         >
         </v-img>

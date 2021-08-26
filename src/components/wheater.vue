@@ -17,22 +17,19 @@
         ></v-date-picker>
       </v-card-text>
     </v-card>
-    <v-progress-circular
-      v-if="!nasaResponse"
-      :size="70"
-      :width="7"
-      color="blue"
-      indeterminate
-    ></v-progress-circular>
+    <loading :response="nasaResponse"></loading>
   </v-container>
 </template>
 
 <script>
+import loading from "@/components/loading";
 import axios from "axios";
 
 export default {
   name: "HelloWorld",
-
+  components: {
+    loading,
+  },
   data: () => ({
     pictureUrl: "",
     nasaResponse: null,
@@ -53,6 +50,8 @@ export default {
   },
   mounted() {
     this.currentDate = this.formateDate(this.currentDate, -1);
+    this.date = this.currentDate;
+    this.dateFormat = this.date.replaceAll("-", "/");
     this.getapod();
   },
   methods: {

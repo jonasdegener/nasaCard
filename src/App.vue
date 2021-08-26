@@ -10,7 +10,7 @@
       <lottie
         id="lottieAni"
         :options="defaultOptions"
-        :height="100"
+        :height="50"
         :width="300"
         @animCreated="handleAnimation"
       />

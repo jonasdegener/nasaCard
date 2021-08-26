@@ -1,8 +1,23 @@
 <template>
   <v-container>
     <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
-      <v-img aspect-ratio="1.7" class="white--text align-end" :src="pictureUrl">
-      </v-img>
+      <div class="d-flex justify-center align-center">
+        <v-img
+          v-if="pictureUrl.length > 0"
+          aspect-ratio="1.7"
+          class="white--text align-end"
+          :src="pictureUrl"
+        >
+        </v-img>
+        <v-progress-circular
+          v-else
+          :size="40"
+          :width="3"
+          color="blue"
+          class="mt-5"
+          indeterminate
+        ></v-progress-circular>
+      </div>
       <v-card-subtitle class="pb-0 mb-1 text-center">
         Here you get a daily picture + description on a theme of Nasa.
       </v-card-subtitle>
@@ -20,21 +35,18 @@
         </v-expansion-panels>
       </v-card-text>
     </v-card>
-    <v-progress-circular
-      v-if="!nasaResponse"
-      :size="70"
-      :width="7"
-      color="blue"
-      indeterminate
-    ></v-progress-circular>
+    <loading :response="nasaResponse"></loading>
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
-
+import loading from "@/components/loading";
 export default {
   name: "HelloWorld",
+  components: {
+    loading,
+  },
 
   data: () => ({
     pictureUrl: "",
@@ -67,8 +79,5 @@ export default {
 <style>
 .jd-pannel {
   box-shadow: rgba(127, 127, 127, 0.25) 0 25px 50px -12px;
-}
-.jd-url {
-  font-size: 8px;
 }
 </style>

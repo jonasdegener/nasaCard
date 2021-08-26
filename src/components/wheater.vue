@@ -36,6 +36,7 @@ export default {
   data: () => ({
     pictureUrl: "",
     nasaResponse: null,
+    retry: false,
     currentDate: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
       .toISOString()
       .substr(0, 10),
@@ -74,12 +75,14 @@ export default {
             "/png/" +
             response.data[0].image +
             ".png?api_key=n1pHbdRcIGmowU8HOEbnb3iQwW89beCbfJnoAk0L";
+          this.retry = false;
           this.nasaResponse = response.data[0];
         })
         .catch(
           // eslint-disable-next-line no-unused-vars
           (err) => {
-            if (this.currentDate === this.date) {
+            if (this.currentDate === this.date || this.retry) {
+              this.retry = true;
               this.date = this.formateDate(this.date, -1);
             } else {
               this.date = this.formateDate(this.date, 1);

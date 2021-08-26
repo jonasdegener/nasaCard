@@ -1,8 +1,23 @@
 <template>
   <v-container class="jd-overflow">
-    <v-card v-if="nasaResponse" class="mx-auto rounded-xl">
-      <v-img aspect-ratio="1.2" class="white--text align-end" :src="pictureUrl">
-      </v-img>
+    <v-card v-if="nasaResponse" class="mx-4 rounded-xl">
+      <div class="d-flex justify-center align-center">
+        <v-img
+          v-if="pictureUrl.length > 0"
+          aspect-ratio="1.2"
+          class="white--text align-end rounded-xl"
+          :src="pictureUrl"
+        >
+        </v-img>
+        <v-progress-circular
+          v-else
+          :size="40"
+          :width="3"
+          color="blue"
+          class="mt-5"
+          indeterminate
+        ></v-progress-circular>
+      </div>
       <v-card-subtitle class="pb-0 mb-1">
         If no image exists, the date will be adjusted.
       </v-card-subtitle>

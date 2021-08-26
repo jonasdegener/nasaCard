@@ -7,7 +7,13 @@
     }"
   >
     <div class="jd-help-text">
-      <p class="pt-1">swipe left and right</p>
+      <lottie
+        id="lottieAni"
+        :options="defaultOptions"
+        :height="100"
+        :width="300"
+        @animCreated="handleAnimation"
+      />
     </div>
     <v-main class="wrapper">
       <apod v-if="card === 1" />
@@ -19,6 +25,8 @@
 <script>
 import apod from "./components/apod";
 import wheater from "@/components/wheater";
+import swipe from "/src/swipe.json";
+import Lottie from "vue-lottie";
 
 export default {
   name: "App",
@@ -26,11 +34,16 @@ export default {
   components: {
     apod,
     wheater,
+    Lottie,
   },
   data: () => ({
     card: 1,
+    defaultOptions: { animationData: swipe, autoplay: true },
   }),
   methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    },
     swipe(direction) {
       console.log(direction);
       if (direction === "Right") {
